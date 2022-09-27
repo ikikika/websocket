@@ -17,10 +17,14 @@ const io = new Server(server, {
 io.on("connection", (socket) => {
   console.log(`user connected: ${socket.id}`);
 
-  socket.on("event_name", data => {
-    // console.log(data);
-    socket.broadcast.emit("broadcast_event_name", data)
-  })
+  socket.on("join_room", (data) => {
+    socket.join(data);
+  });
+
+  socket.on("event_name", (data) => {
+    socket.to(data.room).emit("broadcast_event_name", data);
+  });
+
 });
 
 server.listen(3001, () => {
