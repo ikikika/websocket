@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import io from "socket.io-client";
 
 const socket = io.connect("http://localhost:3001");
@@ -13,6 +13,13 @@ const App = () => {
   const onClickHandler = () => {
     socket.emit("event_name", { message: inputData });
   };
+
+  useEffect(() => {
+    socket.on("broadcast_event_name", data => {
+      console.log(data);
+    });
+  }, [socket]);
+
   return (
     <div className="App">
       <input

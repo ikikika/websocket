@@ -18,7 +18,8 @@ io.on("connection", (socket) => {
   console.log(`user connected: ${socket.id}`);
 
   socket.on("event_name", data => {
-    console.log(data);
+    // console.log(data);
+    socket.broadcast.emit("broadcast_event_name", data)
   })
 });
 
