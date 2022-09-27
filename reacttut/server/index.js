@@ -15,7 +15,11 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-    console.log(`user connected: ${socket.id}`);
+  console.log(`user connected: ${socket.id}`);
+
+  socket.on("event_name", data => {
+    console.log(data);
+  })
 });
 
 server.listen(3001, () => {

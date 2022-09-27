@@ -11,7 +11,7 @@ const App = () => {
   };
 
   const onClickHandler = () => {
-    // socket.emit()
+    socket.emit("event_name", { message: inputData });
   };
   return (
     <div className="App">
