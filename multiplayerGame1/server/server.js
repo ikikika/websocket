@@ -12,8 +12,17 @@ const io = new Server(server, {
   cors: {
     origin: process.env.FE_URL,
     methods: ["GET", "POST"],
+    transports: ['websocket']
   },
 });
+
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
+
+app.get('/loaderio-1dac374e0009a4da951027713b28b2eb/', (req, res) => {
+  res.send('loaderio-1dac374e0009a4da951027713b28b2eb')
+})
 
 let players = {};
 io.on("connection", (socket) => {
@@ -40,9 +49,8 @@ io.on("connection", (socket) => {
 
 setInterval(function () {
   io.sockets.emit("broadcast_players", players);
-  
 }, 1000 / 60);
 
-server.listen(3001, () => {
+server.listen(process.env.PORT, () => {
   console.log("server is running");
 });
