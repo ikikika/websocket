@@ -1,4 +1,5 @@
 class Department {
+  static fiscalYear = 2023;
   //   private readonly id: string;
   //   public name: string;
 
@@ -11,6 +12,16 @@ class Department {
   constructor(private readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
+    // //
+    // this will fail as we cannot access static properties inside non-static function
+    // console.log(this.fiscalYear);
+    // if we want to access static property here, use the class name
+    console.log(Department.fiscalYear);
+  }
+
+  // static method, we can call this method without instantiating this class
+  static createEmployee(name: string) {
+    return { name: name };
   }
 
   // method in a class
@@ -86,6 +97,9 @@ class AccountingDepartment extends Department {
     console.log(this.reports);
   }
 }
+
+const employee1 = Department.createEmployee("Max");
+console.log(employee1, Department.fiscalYear);
 
 const it = new ITDepartment("d1", ["Max"]);
 
