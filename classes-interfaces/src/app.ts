@@ -1,12 +1,13 @@
 class Department {
-  //   private id: string;
+  //   private readonly id: string;
   //   public name: string;
 
   // to protect this array so that we can control how it is accessed/modified
   private employees: string[] = [];
 
   // shorthand init, no need to define elements at the top, can define here
-  constructor(private id: string, public name: string) {
+  // do not allow id to be overwritten. its good to be clear on the intention
+  constructor(private readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
   }
@@ -15,7 +16,7 @@ class Department {
   // 'this' in this case will always be called as an object from the Department class
   // eg, abc.describe(), if abc is not an object of the department class, it will throw an error
   describe(this: Department) {
-    console.log("Department: " + this.name);
+    console.log(`Department (${this.id}): ${this.name}`);
   }
 
   // because employee is private, we define this function as the only way to add items to that array
