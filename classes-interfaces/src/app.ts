@@ -1,11 +1,14 @@
 class Department {
-  public name: string;
+  //   private id: string;
+  //   public name: string;
 
   // to protect this array so that we can control how it is accessed/modified
   private employees: string[] = [];
 
-  constructor(n: string) {
-    this.name = n;
+  // shorthand init, no need to define elements at the top, can define here
+  constructor(private id: string, public name: string) {
+    // this.id = id;
+    // this.name = n;
   }
 
   // method in a class
@@ -28,7 +31,7 @@ class Department {
 }
 
 // create a new js object based on the blueprint
-const accounting = new Department("Accounting");
+const accounting = new Department("d1", "Accounting");
 
 accounting.addEmployee("Max");
 accounting.addEmployee("Manu");
