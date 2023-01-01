@@ -31,8 +31,54 @@ class Department {
   }
 }
 
+// new class inheriting properties from old class
+// if we dun define constructor, it will use constructor from old class
+class ITDepartment extends Department {
+  admins: string[];
+  constructor(id: string, admins: string[]) {
+    // Whenever you add your own constructor in a class that inherits from another class, you have to add super in the inheriting class
+    // Super here calls the constructor of the base class,
+    // super takes the arguments of the parent class constructor
+    // must call super first before doing anything with 'this' keyword
+    super(id, "IT");
+    this.admins = admins;
+  }
+}
+
+// we can also create our accounting department as child of department and add out accounting specifc things
+class AccountingDepartment extends Department {
+  constructor(id: string, private reports: string[]) {
+    super(id, "Accounting");
+  }
+
+  addReport(text: string) {
+    this.reports.push(text);
+  }
+
+  printReports() {
+    console.log(this.reports);
+  }
+}
+
+const it = new ITDepartment("d1", ["Max"]);
+
+it.addEmployee("Max");
+it.addEmployee("Manu");
+
+it.describe();
+it.name = "NEW NAME";
+it.printEmployeeInformation();
+
+console.log(it);
+
 // create a new js object based on the blueprint
-const accounting = new Department("d1", "Accounting");
+// const accounting = new Department("d1", "Accounting");
+
+const accounting = new AccountingDepartment("d2", []);
+
+accounting.addReport("Something went wrong...");
+
+accounting.printReports();
 
 accounting.addEmployee("Max");
 accounting.addEmployee("Manu");
