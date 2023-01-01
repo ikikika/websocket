@@ -3,7 +3,8 @@ class Department {
   //   public name: string;
 
   // to protect this array so that we can control how it is accessed/modified
-  private employees: string[] = [];
+  // if we use private, it cannot be modified by child classes
+  protected employees: string[] = [];
 
   // shorthand init, no need to define elements at the top, can define here
   // do not allow id to be overwritten. its good to be clear on the intention
@@ -49,6 +50,13 @@ class ITDepartment extends Department {
 class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
+  }
+
+  addEmployee(name: string) {
+    if (name === "Max") {
+      return;
+    }
+    this.employees.push(name);
   }
 
   addReport(text: string) {
