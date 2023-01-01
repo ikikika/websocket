@@ -48,8 +48,26 @@ class ITDepartment extends Department {
 
 // we can also create our accounting department as child of department and add out accounting specifc things
 class AccountingDepartment extends Department {
+  private lastReport: string;
+
+  // lastReport is private, but we can still make it accessible from the outside by using getters and setters
+  get mostRecentReport() {
+    if (this.lastReport) {
+      return this.lastReport;
+    }
+    throw new Error("No report found.");
+  }
+
+  set mostRecentReport(value: string) {
+    if (!value) {
+      throw new Error("Please pass in a valid value!");
+    }
+    this.addReport(value);
+  }
+
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
+    this.lastReport = reports[0];
   }
 
   addEmployee(name: string) {
@@ -61,6 +79,7 @@ class AccountingDepartment extends Department {
 
   addReport(text: string) {
     this.reports.push(text);
+    this.lastReport = text;
   }
 
   printReports() {
@@ -84,7 +103,9 @@ console.log(it);
 
 const accounting = new AccountingDepartment("d2", []);
 
+accounting.mostRecentReport = "Year End Report"; // setter, this is a property, not executed as a method
 accounting.addReport("Something went wrong...");
+console.log(accounting.mostRecentReport); // getter, this is a property, not executed as a method
 
 accounting.printReports();
 
