@@ -9,7 +9,7 @@ class Department {
 
   // shorthand init, no need to define elements at the top, can define here
   // do not allow id to be overwritten. its good to be clear on the intention
-  constructor(private readonly id: string, public name: string) {
+  constructor(protected readonly id: string, public name: string) {
     // this.id = id;
     // this.name = n;
     // //
@@ -79,6 +79,11 @@ class AccountingDepartment extends Department {
   constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
     this.lastReport = reports[0];
+  }
+
+  // override describe mehthod from Department class
+  describe() {
+    console.log("Accounting Department - ID: " + this.id);
   }
 
   addEmployee(name: string) {
