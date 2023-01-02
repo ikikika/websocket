@@ -1,4 +1,6 @@
-class Department {
+// abstract class can't be instantiated themselves.
+// can only be inherited by child classes
+abstract class Department {
   static fiscalYear = 2023;
   //   private readonly id: string;
   //   public name: string;
@@ -27,9 +29,12 @@ class Department {
   // method in a class
   // 'this' in this case will always be called as an object from the Department class
   // eg, abc.describe(), if abc is not an object of the department class, it will throw an error
-  describe(this: Department) {
-    console.log(`Department (${this.id}): ${this.name}`);
-  }
+  //   describe(this: Department) {
+  //     console.log(`Department (${this.id}): ${this.name}`);
+  //   }
+
+  // force all child classes to have this method, share common method or property
+  abstract describe(this: Department): void;
 
   // because employee is private, we define this function as the only way to add items to that array
   addEmployee(employee: string) {
@@ -54,6 +59,10 @@ class ITDepartment extends Department {
     // must call super first before doing anything with 'this' keyword
     super(id, "IT");
     this.admins = admins;
+  }
+
+  describe() {
+    console.log("IT Department - ID: " + this.id);
   }
 }
 
