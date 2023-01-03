@@ -10,7 +10,10 @@ add = (n1: number, n2: number) => {
 };
 
 interface Named {
-  readonly name: string;
+  readonly name?: string;
+
+  // optional property
+  outputName?: string;
 }
 
 // force every object based on Greetable to have a greet method, as well as a name property
@@ -28,21 +31,30 @@ interface Greetable extends Named {
 // can implement more than 1 interface
 // class Person implements Greetable, AnotherInterface {
 class Person implements Greetable {
-  name: string;
+  name?: string;
   age = 30;
 
-  constructor(n: string) {
-    this.name = n;
+  constructor(n?: string) {
+    if (n) {
+      this.name = n;
+    }
   }
 
   greet(phrase: string) {
-    console.log(phrase + " " + this.name);
+    if (this.name) {
+      console.log(phrase + " " + this.name);
+    } else {
+      console.log("Hi");
+    }
   }
 }
 
 let user1: Greetable;
 
-user1 = new Person("Max");
+// user1 = new Person("Max");
+
+// we can now call this constructor without an argument value as it is marked as optional
+user1 = new Person();
 
 // this fails becuase name is readonly
 // user1.name = "Max2";
