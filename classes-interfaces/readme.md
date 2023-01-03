@@ -15,3 +15,4 @@
 - not a blueprint, just a custom type
 - no concrete values
 - use to typecheck an object
+- often used to chare functionality amongst different classes, not regarding implementation, but regarding structure
