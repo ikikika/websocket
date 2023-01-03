@@ -1,6 +1,13 @@
-interface Greetable {
-  // only be set once and is read-only, can't be changed after the object has been initialized.
+interface Named {
   readonly name: string;
+}
+
+// force every object based on Greetable to have a greet method, as well as a name property
+// can extend more than 1 interface
+// interface Greetable extends Named, AnotherInterface {
+interface Greetable extends Named {
+  //   // only be set once and is read-only, can't be changed after the object has been initialized.
+  //   readonly name: string;
 
   greet(phrase: string): void;
 }
