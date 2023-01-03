@@ -7,3 +7,11 @@
 ## Objects
 
 - instances of classes
+
+## Interfaces
+
+- an interface describes the structure of an object.
+- use it to describe how an object should look like.
+- not a blueprint, just a custom type
+- no concrete values
+- use to typecheck an object
