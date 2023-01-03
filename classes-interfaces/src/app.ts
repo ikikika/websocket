@@ -69,6 +69,7 @@ class ITDepartment extends Department {
 // we can also create our accounting department as child of department and add out accounting specifc things
 class AccountingDepartment extends Department {
   private lastReport: string;
+  private static instance: AccountingDepartment;
 
   // lastReport is private, but we can still make it accessible from the outside by using getters and setters
   get mostRecentReport() {
@@ -85,9 +86,19 @@ class AccountingDepartment extends Department {
     this.addReport(value);
   }
 
-  constructor(id: string, private reports: string[]) {
+  // singleton: only 1 instance of this class will be allowed
+  private constructor(id: string, private reports: string[]) {
     super(id, "Accounting");
     this.lastReport = reports[0];
+  }
+
+  static getInstance() {
+    if (AccountingDepartment.instance) {
+      return this.instance;
+    }
+    // can access the constructor to create instance here
+    this.instance = new AccountingDepartment("d2", []);
+    return this.instance;
   }
 
   // override describe mehthod from Department class
@@ -129,7 +140,13 @@ console.log(it);
 // create a new js object based on the blueprint
 // const accounting = new Department("d1", "Accounting");
 
-const accounting = new AccountingDepartment("d2", []);
+// as AccountingDepartment is now a singleton, we cannot create new instance of AccountingDepartment
+// const accounting = new AccountingDepartment("d2", []);
+
+const accounting = AccountingDepartment.getInstance();
+
+// this will create the exact same instance as the one above
+const accounting2 = AccountingDepartment.getInstance();
 
 accounting.mostRecentReport = "Year End Report"; // setter, this is a property, not executed as a method
 accounting.addReport("Something went wrong...");
