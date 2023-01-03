@@ -1,5 +1,6 @@
 interface Greetable {
-  name: string;
+  // only be set once and is read-only, can't be changed after the object has been initialized.
+  readonly name: string;
 
   greet(phrase: string): void;
 }
@@ -24,6 +25,9 @@ class Person implements Greetable {
 let user1: Greetable;
 
 user1 = new Person("Max");
+
+// this fails becuase name is readonly
+// user1.name = "Max2";
 
 user1.greet("Hi there - I am");
 console.log(user1);
