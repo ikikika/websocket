@@ -10,3 +10,7 @@
   - typeof (other types)
   - in (objects)
   - instanceof (objects)
+
+## Discriminated Union
+
+- a pattern that makes implementing type guards easier
