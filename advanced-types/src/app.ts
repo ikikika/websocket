@@ -118,3 +118,15 @@ function moveAnimal(animal: Animal) {
 
 // will not be able to set runningSpeed as second property
 moveAnimal({ type: "bird", flyingSpeed: 10 });
+
+// TS only knows that userInputElement is of type HTMLElement | null
+// it will throw error if we try to get property like value, which is available in HTMLInputElement but not HTMLElement
+const userInputElement = document.getElementById("user-input");
+
+// another way of type casting
+// const userInputElement = <HTMLInputElement>document.getElementById('user-input')!;
+
+if (userInputElement) {
+  // type casting happens here
+  (userInputElement as HTMLInputElement).value = "Hi there!";
+}
