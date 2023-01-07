@@ -27,3 +27,10 @@
 
 - define multiple function signatures
 - we can have multiple possible ways of calling function with different parameters to do something inside the function
+
+## Optional chaining
+
+- not certain if an object with a certain property is defined
+- helps us safely access nested properties and nested objects in our object data
+- if the thing in front of the question mark is undefined it will not access the thing thereafter
+- will not throw a runtime error but instead it will just not continue.

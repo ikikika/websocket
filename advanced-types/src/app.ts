@@ -155,3 +155,12 @@ const errorBag: ErrorContainer = {
   email: "Not a valid email!",
   username: "Must start with a capital character!",
 };
+
+const fetchedUserData = {
+  id: "u1",
+  name: "Tom",
+  job: { title: "CEO", description: "chief entertainment officer" },
+};
+
+// if job doesnt exist in fetchedUserData, it will end here
+console.log(fetchedUserData.job?.title);
