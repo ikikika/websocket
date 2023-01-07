@@ -34,3 +34,7 @@
 - helps us safely access nested properties and nested objects in our object data
 - if the thing in front of the question mark is undefined it will not access the thing thereafter
 - will not throw a runtime error but instead it will just not continue.
+
+## Nullish Coalescing
+
+- if value is null or undefined, use the fallback value

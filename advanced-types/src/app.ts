@@ -164,3 +164,9 @@ const fetchedUserData = {
 
 // if job doesnt exist in fetchedUserData, it will end here
 console.log(fetchedUserData.job?.title);
+
+const userInput = undefined;
+
+const storedData = userInput ?? "DEFAULT";
+
+console.log(storedData);
