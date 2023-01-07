@@ -27,6 +27,9 @@ type Numeric = number | boolean;
 
 type Universal = Combinable & Numeric;
 
+// function overload to define types of parameters and thype of result
+function add(a: number, b: number): number; // overload 1
+function add(a: string, b: string): string; // overload 2
 function add(a: Combinable, b: Combinable) {
   // this is a type guard using if
   if (typeof a === "string" || typeof b === "string") {
@@ -34,6 +37,14 @@ function add(a: Combinable, b: Combinable) {
   }
   return a + b;
 }
+
+// ts recognise this as overload 1
+const result1 = add(1, 2);
+
+// ts recognise this as overload 2
+const result2 = add("a", "b");
+// this can then be run as TS recognise result2 as string
+result2.split(" ");
 
 type UnknownEmployee = Employee | Admin;
 

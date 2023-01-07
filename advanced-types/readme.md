@@ -22,3 +22,8 @@
 ## Index properties
 
 - define interface such that we dun need to know in advance which property names to use and how many properties we need
+
+## Function overloads
+
+- define multiple function signatures
+- we can have multiple possible ways of calling function with different parameters to do something inside the function
