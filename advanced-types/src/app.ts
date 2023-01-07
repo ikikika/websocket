@@ -130,3 +130,17 @@ if (userInputElement) {
   // type casting happens here
   (userInputElement as HTMLInputElement).value = "Hi there!";
 }
+
+interface ErrorContainer {
+  // this only apply for email and username
+  // { email: 'Not a valid email', username: 'Must start with a character!' }
+
+  // this makes the interface flexible for every type of object
+  // dunno the exact property name, dunno the property count, just know that every property added must have property name as a string and value as a string
+  [prop: string]: string;
+}
+
+const errorBag: ErrorContainer = {
+  email: "Not a valid email!",
+  username: "Must start with a capital character!",
+};

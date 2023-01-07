@@ -18,3 +18,7 @@
 ## Type casting
 
 - tell TypeScript that some value is of a specific type where TypeScript is not able to detect it on it's own, but the dev knows
+
+## Index properties
+
+- define interface such that we dun need to know in advance which property names to use and how many properties we need
