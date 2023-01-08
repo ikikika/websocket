@@ -57,9 +57,13 @@ extractAndConvert({ name: "Max" }, "name");
 
 // flexible and maintains TS support
 // need to constraint because it only works for primitive types
+// generic type locks in a type, only able to choose one type per object
 class DataStorage<T extends string | number | boolean> {
   // dun need to care about what type of data we are storing
   private data: T[] = [];
+
+  // union type, can take either one and push to array
+  // private data: string[] | number[] | boolean[] = [];
 
   addItem(item: T) {
     this.data.push(item);
