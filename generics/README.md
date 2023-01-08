@@ -9,3 +9,4 @@
 
 - enclosed in angle brackets
 - pass extra information to TS so that TS can better infer the result type
+- use keyof constraint to guarantee that 2nd type exist as a property of the 1st type

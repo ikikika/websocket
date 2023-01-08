@@ -42,3 +42,15 @@ function countAndDescribe<T extends Lengthy>(element: T): [T, string] {
 }
 
 console.log(countAndDescribe(["Sports", "Cooking"]));
+
+// need to extends keyof because we dunno if the object really contain the key property
+// function extractAndConvert(obj: object, key: string){
+// guarantee that key is a property of that first type.
+function extractAndConvert<T extends object, U extends keyof T>(
+  obj: T,
+  key: U
+) {
+  return "Value: " + obj[key];
+}
+
+extractAndConvert({ name: "Max" }, "name");
