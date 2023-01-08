@@ -54,3 +54,48 @@ function extractAndConvert<T extends object, U extends keyof T>(
 }
 
 extractAndConvert({ name: "Max" }, "name");
+
+// flexible and maintains TS support
+// need to constraint because it only works for primitive types
+class DataStorage<T extends string | number | boolean> {
+  // dun need to care about what type of data we are storing
+  private data: T[] = [];
+
+  addItem(item: T) {
+    this.data.push(item);
+  }
+
+  removeItem(item: T) {
+    if (this.data.indexOf(item) === -1) {
+      return;
+    }
+    this.data.splice(this.data.indexOf(item), 1); // -1
+  }
+
+  getItems() {
+    return [...this.data];
+  }
+}
+
+// string here
+const textStorage = new DataStorage<string>();
+textStorage.addItem("Max");
+textStorage.addItem("Manu");
+textStorage.removeItem("Max");
+console.log(textStorage.getItems());
+
+// same class, but number here
+const numberStorage = new DataStorage<number>();
+
+// const objStorage = new DataStorage<object>();
+
+// alternative to working with objects
+// const maxObj = {name: 'Max'};
+// objStorage.addItem(maxObj);
+
+// objStorage.addItem({name: 'Manu'});
+// // ...
+
+// remove the exact ame object
+// objStorage.removeItem(maxObj);
+// console.log(objStorage.getItems());
