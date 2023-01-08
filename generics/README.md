@@ -10,3 +10,9 @@
 - enclosed in angle brackets
 - pass extra information to TS so that TS can better infer the result type
 - use keyof constraint to guarantee that 2nd type exist as a property of the 1st type
+
+## Generic Utility Types
+
+- Partial: changes this to a type where all the properties are optional, but eventually will take the properties of the expected type
+- Readonly: not allowed to change, add or remove properties to array or object
+- https://www.typescriptlang.org/docs/handbook/utility-types.html

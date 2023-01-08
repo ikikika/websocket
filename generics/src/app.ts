@@ -99,3 +99,31 @@ const numberStorage = new DataStorage<number>();
 // remove the exact ame object
 // objStorage.removeItem(maxObj);
 // console.log(objStorage.getItems());
+
+interface CourseGoal {
+  title: string;
+  description: string;
+  completeUntil: Date;
+}
+
+function createCourseGoal(
+  title: string,
+  description: string,
+  date: Date
+): CourseGoal {
+  // partial changes this to a type where all the properties are optional, but eventually will take the properties of the courseGoal type
+  // therefore we are allowed to create an empty placeholder object
+  let courseGoal: Partial<CourseGoal> = {};
+  courseGoal.title = title;
+  courseGoal.description = description;
+  courseGoal.completeUntil = date;
+
+  // partial should only be temporary
+  // need to cast it back to the expected type before returning
+  return courseGoal as CourseGoal;
+}
+
+const names: Readonly<string[]> = ["Max", "Anna"];
+// not possible as array is readonly
+// names.push('Manu');
+// names.pop();
